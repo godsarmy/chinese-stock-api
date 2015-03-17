@@ -1,0 +1,10 @@
+
+Usage:
+    
+ from stock.request import Requests
+ from stock.hexun_engine import HexunEngine
+
+ engine = HexunEngine()
+ requester = Requester(engine)
+
+ stock = requester.request('000626')
