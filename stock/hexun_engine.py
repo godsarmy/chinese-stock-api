@@ -42,8 +42,11 @@ class HexunEngine(Engine):
         
         raise ParserException("Unknow stock id %s" % stock_id)
 
-    def parse(self, data):
+    def parse(self, data, _stock_id):
         """parse data from hexun request
+
+        :raise:
+            exceptions if data from hexun is not well-formated
         """
 
         def prepare_data(data):
@@ -59,10 +62,10 @@ class HexunEngine(Engine):
 
         json_string = prepare_data(data)
         obj = json.loads(json_string)
-        return self.generate_stock(obj)
+        return self._generate_stock(obj)
 
     @staticmethod
-    def generate_stock(obj):
+    def _generate_stock(obj):
         """obj struct is {'1000626': {'code': ...}}
         """
         stock = obj.values()[0]        

@@ -4,7 +4,7 @@ import abc
 class Engine(object):
 
     @abc.abstractmethod
-    def parse(self, data):
+    def parse(self, data, stock_id):
         pass
 
     @abc.abstractmethod

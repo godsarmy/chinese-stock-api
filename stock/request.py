@@ -19,6 +19,6 @@ class Requester(object):
         response = urllib2.urlopen(request)
         data = response.read()
 
-        return self._engine.parse(data)
+        return self._engine.parse(data, stock_id)
 
 __all__ = ['Requester']
