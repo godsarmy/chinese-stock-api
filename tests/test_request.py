@@ -3,10 +3,10 @@ import unittest
 from datetime import datetime
 
 # project library
-from stock.hexun_engine import HexunEngine
-from stock.sina_engine import SinaEngine
-from stock.request import Requester
-from stock.model import Stock
+from cstock.hexun_engine import HexunEngine
+from cstock.sina_engine import SinaEngine
+from cstock.request import Requester
+from cstock.model import Stock
 
 class TestRequester(unittest.TestCase):
 

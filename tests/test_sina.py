@@ -4,7 +4,7 @@ import unittest
 import datetime
 
 # project library
-from stock.sina_engine import SinaEngine
+from cstock.sina_engine import SinaEngine
 
 
 class TestEngine(unittest.TestCase):

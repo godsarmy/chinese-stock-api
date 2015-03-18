@@ -3,7 +3,7 @@ import unittest
 import datetime
 
 # project library
-from stock.hexun_engine import HexunEngine
+from cstock.hexun_engine import HexunEngine
 
 
 class TestEngine(unittest.TestCase):

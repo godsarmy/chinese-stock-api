@@ -3,7 +3,7 @@ import unittest
 from datetime import datetime
 
 # project library
-from stock.model import Stock
+from cstock.model import Stock
 
 
 class TestModel(unittest.TestCase):

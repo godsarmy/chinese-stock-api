@@ -2,8 +2,8 @@ import re
 import json
 import datetime
 
-from stock.base_engine import Engine
-from stock.model import Stock, ParserException
+from cstock.base_engine import Engine
+from cstock.model import Stock, ParserException
 
 class SinaEngine(Engine):
     """
