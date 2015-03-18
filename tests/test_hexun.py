@@ -33,6 +33,6 @@ class TestEngine(unittest.TestCase):
              'turnover': 568164503.64,
              'volume': 11515572,
              'name': u'\u5982\u610f\u96c6\u56e2',
-             'date': datetime.date(2015, 3, 17),
-             'time': datetime.time(15, 49, 11)}
+             'date': '2015-03-17',
+             'time': '15:49:11'}
         )

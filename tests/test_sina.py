@@ -32,6 +32,6 @@ class TestEngine(unittest.TestCase):
              'price': '6.15',
              'turnover': '3341837325',
              'volume': '542628944',
-             'date': datetime.date(2015, 3, 18),
-             'time': datetime.time(15, 3, 5)}
+             'date': '2015-03-18',
+             'time': '15:03:05'}
         )

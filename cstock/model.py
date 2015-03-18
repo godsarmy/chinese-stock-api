@@ -31,9 +31,19 @@ class Stock(object):
             setattr(self, k, v)
 
     def as_dict(self):
-        return {
-            i: getattr(self, i, None) 
+        result = {
+            i: getattr(self, i, None)
             for i in self.__slots__
         }
+
+        # dispose date and time because they are datetime class instance
+        if result['date'] is not None:
+            result['date'] = str(result['date'])
+
+        if result['time'] is not None:
+            result['time'] = str(result['time'])
+
+        return result
+
 
 __all__ = ['ParserException', 'Stock']
