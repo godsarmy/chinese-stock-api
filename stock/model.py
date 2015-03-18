@@ -5,13 +5,24 @@ class ParserException(Exception):
 
 class Stock(object):
     
+    # close is yesterday close price
+    # there is no today close price
+
+    # volume: unit of stock transacted
+    # turnover: total transaction money
+
     __slots__ = [
+        'name',
         'code',
+        'date',
         'time',
         'price',
         'open',
+        'close',
         'high',
-        'low'
+        'low',
+        'volume',
+        'turnover',
     ]
 
     def __init__(self, **argvs):

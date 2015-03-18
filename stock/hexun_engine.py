@@ -1,5 +1,6 @@
 import re
 import json
+import datetime
 
 from stock.base_engine import Engine
 from stock.model import Stock, ParserException
@@ -22,7 +23,6 @@ class HexunEngine(Engine):
 
         self.shanghai_transform = lambda sid: "0%s" % sid
         self.shenzhen_transform = lambda sid: "1%s" % sid
-
  
     def get_url(self, stock_id):
         hexun_id = self.get_hexun_id(stock_id)
@@ -66,22 +66,40 @@ class HexunEngine(Engine):
 
     @staticmethod
     def _generate_stock(obj):
-        """obj struct is {'1000626': {'code': ...}}
+        """obj structure is {'1000626': {'code': ...}}
         """
         stock = obj.values()[0]        
 
         code = stock.get('code', None)
         if code is not None:
-            # we need to move the hexun addition market digit in stock code
+            # we need to remove the hexun addition market digit in stock code
             code = code[1:]
+
+        timestr = stock.get('time', None)
+        if timestr is not None:
+            times = timestr.split(' ')
+            date = datetime.datetime.strptime(
+                times[0], '%Y/%m/%d'
+            ).date()
+            time = datetime.datetime.strptime(
+                times[1], '%H:%M:%S'
+            ).time()
+        else:
+            time = None
+            date = None
 
         return Stock(
             code=code,
+            name=stock.get('name', None),
             price=stock.get('price', None),
-            time=stock.get('time', None),
+            time=time,
+            date=date,
             open=stock.get('open', None),
+            close=stock.get('yestclose', None),
             low=stock.get('low', None),
             high=stock.get('high', None),
+            volume=stock.get('volume', None),
+            turnover=stock.get('turnover', None),
         )                
 
 __all__ = ['HexunEngine']

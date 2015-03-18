@@ -1,12 +1,12 @@
 # system library
 import unittest
-from datetime import datetime
+import datetime
 
 # project library
 from stock.hexun_engine import HexunEngine
 
 
-class TestParser(unittest.TestCase):
+class TestEngine(unittest.TestCase):
 
     def setUp(self):
         self.engine = HexunEngine()
@@ -28,6 +28,11 @@ class TestParser(unittest.TestCase):
              'high': 51.68,
              'low': 47.2,
              'open': 49.9,
+             'close': 48.05,
              'price': 48.46,
-             'time': u'2015/03/17 15:49:11'}
+             'turnover': 568164503.64,
+             'volume': 11515572,
+             'name': u'\u5982\u610f\u96c6\u56e2',
+             'date': datetime.date(2015, 3, 17),
+             'time': datetime.time(15, 49, 11)}
         )

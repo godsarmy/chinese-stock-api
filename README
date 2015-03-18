@@ -1,4 +1,6 @@
 
+Library to get Chinese stock price via Hexun API or Sina Finance API
+
 Usage:
     
  from stock.request import Requests
@@ -8,3 +10,4 @@ Usage:
  requester = Requester(engine)
 
  stock = requester.request('000626')
+ print stock.as_dict()
