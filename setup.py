@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='chinesestockapi',
-    version='1.1',
+    version='1.2',
     description='Python API to get Chinese stock price',
     author='Walt Chen',
     author_email='godsarmycy@gmail.com',
