@@ -10,37 +10,20 @@ class HexunEngine(Engine):
     Hexun Engine transform stock id & parse data
     """
 
-    __slots__ = ['_url']
-
     DEFAULT_BASE_URL = "http://api.money.126.net/data/feed/%s,money.api"
 
     def __init__(self, base_url=None):
 
-        if base_url is None:
-            self._url = self.DEFAULT_BASE_URL
-        else:
-            self._url = base_url
+        super(HexunEngine, self).__init__(base_url)
 
         self.shanghai_transform = lambda sid: "0%s" % sid
         self.shenzhen_transform = lambda sid: "1%s" % sid
  
-    def get_url(self, stock_id):
-        hexun_id = self.get_hexun_id(stock_id)
-        return self._url % hexun_id
+    def get_url(self, stock_id, date=None):
+        if date is not None:
+            raise ParserException("Hexun Engie does not accept date")
 
-    def get_hexun_id(self, stock_id):
-        """
-        get hexun id in URL from standard china stock/fund ID
-        hexun regards stock/fund starting with 0 or 3 belongs to shenzhen
-        """
-
-        if stock_id.startswith('0') or stock_id.startswith('3'):
-            return self.shenzhen_transform(stock_id)
-        
-        if stock_id.startswith('6'):
-            return self.shanghai_transform(stock_id)
-        
-        raise ParserException("Unknow stock id %s" % stock_id)
+        return super(HexunEngine, self).get_url(stock_id)
 
     def parse(self, data, _stock_id):
         """parse data from hexun request
@@ -62,7 +45,7 @@ class HexunEngine(Engine):
 
         json_string = prepare_data(data)
         obj = json.loads(json_string)
-        return self._generate_stock(obj)
+        return (self._generate_stock(obj),)
 
     @staticmethod
     def _generate_stock(obj):

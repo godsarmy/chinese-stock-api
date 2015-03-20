@@ -10,35 +10,20 @@ class SinaEngine(Engine):
     Sina Engine transform stock id & parse data
     """
 
-    __slots__ = ['_url']
-
     DEFAULT_BASE_URL = "http://hq.sinajs.cn/list=%s"
 
     def __init__(self, base_url=None):
-
-        if base_url is None:
-            self._url = self.DEFAULT_BASE_URL
-        else:
-            self._url = base_url
+        
+        super(SinaEngine, self).__init__(base_url)
 
         self.shanghai_transform = lambda sid: "sh%s" % sid
         self.shenzhen_transform = lambda sid: "sz%s" % sid
 
-    def get_url(self, stock_id):
-        sina_id = self.get_sina_id(stock_id)
-        return self._url % sina_id
+    def get_url(self, stock_id, date=None):
+        if date is not None:
+            raise ParserException("Sina Engie does not accept date")
 
-    def get_sina_id(self, stock_id):
-        """
-
-        """
-        if stock_id.startswith('0') or stock_id.startswith('3'):
-            return self.shenzhen_transform(stock_id)
-        
-        if stock_id.startswith('6'):
-            return self.shanghai_transform(stock_id)
-        
-        raise ParserException("Unknow stock id %s" % stock_id)
+        return super(SinaEngine, self).get_url(stock_id)
 
     def parse(self, data, stock_id):
 
@@ -55,7 +40,7 @@ class SinaEngine(Engine):
 
         data_string = prepare_data(data)
         obj = data_string.split(',')
-        return self._generate_stock(obj, stock_id)
+        return (self._generate_stock(obj, stock_id),)
 
     @staticmethod
     def _generate_stock(obj, stock_id):

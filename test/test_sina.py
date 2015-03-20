@@ -20,9 +20,9 @@ class TestEngine(unittest.TestCase):
         data = 'var hq_str_sh600010="包钢股份,5.98,5.99,6.15,6.34,5.95,6.15,6.16,542628944,3341837325,239800,6.15,1033800,6.14,2408711,6.13,1719525,6.12,1001900,6.11,2873590,6.16,1481300,6.17,2113716,6.18,1177600,6.19,2587603,6.20,2015-03-18,15:03:05,00";'
 
         stock = self.engine.parse(data, 'foo_id')
-
+        self.assertEqual(len(stock), 1)
         self.assertEqual(
-            stock.as_dict(),
+            stock[0].as_dict(),
             {'close': '5.99',
              'code': 'foo_id',
              'high': '6.34',
