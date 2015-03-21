@@ -11,4 +11,5 @@ setup(
     url='https://pypi.python.org/pypi/chinesestockapi',
     packages=['cstock'],
     platforms = 'any',
+    license = 'Apache Software License',
 )
