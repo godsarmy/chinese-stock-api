@@ -25,7 +25,7 @@ Usage:
 
  print stock.as_dict()
 
-Download the latest release: https://github.com/godsarmy/chinese-stock-api/zipball/master.
+Github Site: https://github.com/godsarmy/chinese-stock-api.
 """
 AUTHOR = 'Walt Chen'
 AUTHOR_EMAIL = 'godsarmycy@gmail.com'
@@ -44,7 +44,8 @@ if __name__ == '__main__':
         author=AUTHOR,
         author_email=AUTHOR_EMAIL,
         url=URL,
-        packages=find_packages(),
+        packages=find_packages(exclude=["test"]),
         platforms=PLATFORM ,
         license=LICENSE,
+        test_suite = 'nose.collector'
     )
