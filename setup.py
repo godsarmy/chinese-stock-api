@@ -1,15 +1,47 @@
 #!/usr/bin/env python
 
-from setuptools import setup
+NAME = 'chinesestockapi'
+VERSION = '1.4'
+DESCRIPTION = 'Python API to get Chinese stock price'
+LONG_DESCRIPTION = """\
+Library to get Chinese stock price
 
-setup(
-    name='chinesestockapi',
-    version='1.3',
-    description='Python API to get Chinese stock price',
-    author='Walt Chen',
-    author_email='godsarmycy@gmail.com',
-    url='https://pypi.python.org/pypi/chinesestockapi',
-    packages=['cstock'],
-    platforms = 'any',
-    license = 'Apache Software License',
-)
+Supported Engines:
+ - Hexun API
+ - Sina Finance API
+ - Yahoo Finance API
+
+Usage:
+
+ from cstock.request import Requests
+ from cstock.hexun_engine import HexunEngine
+
+ engine = HexunEngine()
+ requester = Requester(engine)
+
+ stock = requester.request('000626')
+ print stock.as_dict()
+
+Download the latest release: https://github.com/godsarmy/chinese-stock-api/zipball/master.
+"""
+AUTHOR = 'Walt Chen'
+AUTHOR_EMAIL = 'godsarmycy@gmail.com'
+URL = 'https://pypi.python.org/pypi/chinesestockapi'
+PLATFORM = 'any'
+LICENSE = 'Apache Software License'
+
+from setuptools import setup, find_packages
+
+if __name__ == '__main__':
+    setup(
+        name=NAME,
+        version=VERSION,
+        description=DESCRIPTION,
+        long_description=LONG_DESCRIPTION,
+        author=AUTHOR,
+        author_email=AUTHOR_EMAIL,
+        url=URL,
+        packages=find_packages(),
+        platforms=PLATFORM ,
+        license=LICENSE,
+    )

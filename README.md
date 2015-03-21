@@ -1,5 +1,10 @@
 
-Library to get Chinese stock price via Hexun API or Sina Finance API
+Library to get Chinese stock price
+
+Supported Engines:
+ - Hexun API
+ - Sina Finance API
+ - Yahoo Finance API
 
 Usage:
     
