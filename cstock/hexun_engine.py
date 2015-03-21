@@ -78,7 +78,7 @@ class HexunEngine(Engine):
             time=time,
             date=date,
             open=stock.get('open', None),
-            close=stock.get('yestclose', None),
+            yesterday_close=stock.get('yestclose', None),
             low=stock.get('low', None),
             high=stock.get('high', None),
             volume=stock.get('volume', None),

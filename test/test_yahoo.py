@@ -14,7 +14,7 @@ class TestEngine(unittest.TestCase):
 
     def test_get_url(self):
         url = self.engine.get_url('600010', ('2014-03-04', '2014-03-05')) 
-        self.assertEqual(url, "http://ichart.yahoo.com/table.csv?s=600010.ss&a=3&b=4&c=2014&d=3&e=5&f=2014")
+        self.assertEqual(url, "http://ichart.yahoo.com/table.csv?s=600010.ss&a=2&b=4&c=2014&d=2&e=5&f=2014")
 
     def test_parser(self):
         data = ("Date,Open,High,Low,Close,Volume,Adj Close\n" 
@@ -35,6 +35,7 @@ class TestEngine(unittest.TestCase):
              'price': None,
              'time': None,
              'turnover': None,
+             'yesterday_close': None,
              'volume': '2222200'}
         )
 

@@ -23,7 +23,8 @@ class TestEngine(unittest.TestCase):
         self.assertEqual(len(stock), 1)
         self.assertEqual(
             stock[0].as_dict(),
-            {'close': '5.99',
+            {'yesterday_close': '5.99',
+             'close': None,
              'code': 'foo_id',
              'high': '6.34',
              'low': '5.95',

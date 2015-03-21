@@ -59,7 +59,7 @@ class SinaEngine(Engine):
             code=stock_id,
             name=d.get(0, None),
             open=d.get(1, None),
-            close=d.get(2, None),
+            yesterday_close=d.get(2, None),
             price=d.get(3, None),
             high=d.get(4, None),
             low=d.get(5, None),
