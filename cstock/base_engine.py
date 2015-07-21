@@ -80,6 +80,9 @@ class Engine(object):
         
         if stock_id.startswith('6'):
             return self.shanghai_transform(stock_id)
+
+        if stock_id.lower().startswith('sh') or stock_id.lower().startswith('sz'):
+            return stock_id
         
         raise ParserException("Unknow stock id %s" % stock_id)
 
