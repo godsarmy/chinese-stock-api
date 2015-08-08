@@ -9,14 +9,14 @@ Supported Engines:
 Usage:
     
 ```
-from cstock.request import Requests
+from cstock.request import Requester
 from cstock.hexun_engine import HexunEngine
 
 engine = HexunEngine()
 requester = Requester(engine)
 
-stock = requester.request('000626')
-print stock.as_dict()
+stock_obj = requester.request('000626')
+print stock_obj[0].as_dict()
 ```
 
 * [Download the latest release](https://github.com/godsarmy/chinese-stock-api/zipball/master).
