@@ -75,6 +75,10 @@ class SinaEngine(Engine):
             turnover=d.get(9, None),
             date=date,
             time=time,
+            buy1p=d.get(6, None),
+            buy1v=d.get(10, None),
+            sell1p=d.get(7, None),
+            sell1v=d.get(20, None)
         )
 
 
