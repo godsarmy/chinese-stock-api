@@ -12,7 +12,6 @@ class ParserException(Exception):
 
 
 class Stock(object):
-    
     # yesterday_close is yesterday close price
     # close is today close price
 
@@ -39,7 +38,7 @@ class Stock(object):
     ]
 
     def __init__(self, **argvs):
-        
+
         for (k, v) in argvs.items():
             setattr(self, k, v)
 
@@ -47,7 +46,7 @@ class Stock(object):
         result = {
             i: getattr(self, i, None)
             for i in self.__slots__
-        }
+            }
 
         # dispose date and time because they are datetime class instance
         if result['date'] is not None:

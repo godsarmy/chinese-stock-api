@@ -8,6 +8,9 @@
 
 import abc
 
+from .model import ParserException
+
+
 class Engine(object):
     """Base Engine class, must be inherited
     """
@@ -19,7 +22,7 @@ class Engine(object):
             self._url = self.DEFAULT_BASE_URL
         else:
             self._url = base_url
- 
+
     @abc.abstractmethod
     def parse(self, data, stock_id):
         """
@@ -77,13 +80,14 @@ class Engine(object):
         """
         if stock_id.startswith('0') or stock_id.startswith('3'):
             return self.shenzhen_transform(stock_id)
-        
+
         if stock_id.startswith('6'):
             return self.shanghai_transform(stock_id)
 
         if stock_id.lower().startswith('sh') or stock_id.lower().startswith('sz'):
             return stock_id
-        
+
         raise ParserException("Unknow stock id %s" % stock_id)
+
 
 __all__ = ['Engine']

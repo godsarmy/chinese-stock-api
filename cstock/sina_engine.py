@@ -7,11 +7,11 @@
 #         http://www.apache.org/licenses/LICENSE-2.0
 
 import re
-import json
 import datetime
 
 from cstock.base_engine import Engine
 from cstock.model import Stock, ParserException
+
 
 class SinaEngine(Engine):
     """
@@ -21,7 +21,7 @@ class SinaEngine(Engine):
     DEFAULT_BASE_URL = "http://hq.sinajs.cn/list=%s"
 
     def __init__(self, base_url=None):
-        
+
         super(SinaEngine, self).__init__(base_url)
 
         self.shanghai_transform = lambda sid: "sh%s" % sid
@@ -80,5 +80,3 @@ class SinaEngine(Engine):
             sell1p=d.get(7, None),
             sell1v=d.get(20, None)
         )
-
-

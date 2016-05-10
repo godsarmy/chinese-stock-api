@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-NAME = 'chinesestockapi'
-VERSION = '2.0'
-DESCRIPTION = 'Python API to get Chinese stock price (For Python3.5)'
+NAME = 'chinesestockapi_py3'
+VERSION = '0.9'
+DESCRIPTION = 'Python API to get Chinese stock price for Python3.5'
 LONG_DESCRIPTION = """\
 Library to get Chinese stock price
 
