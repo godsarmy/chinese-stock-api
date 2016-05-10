@@ -18,3 +18,6 @@ requester = Requester(engine)
 stock = requester.request('000626')
 print stock.as_dict()
 ```
+
+
+* [Download from pypi](https://pypi.python.org/pypi/chinesestockapi_py3).
