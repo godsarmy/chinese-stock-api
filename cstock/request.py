@@ -6,7 +6,7 @@
 #
 #         http://www.apache.org/licenses/LICENSE-2.0
 
-import urllib2
+import urllib.request as http
 
 
 class Requester(object):
@@ -16,7 +16,6 @@ class Requester(object):
     __slots__ = ["_engine"]
 
     def __init__(self, engine):
-
         self._engine = engine
 
     def request(self, stock_id, date=None):
@@ -36,15 +35,16 @@ class Requester(object):
         :rtype:
             ``tuple``
         """
-        
-        stock_url = self._engine.get_url(stock_id, date)
-        print stock_url
 
-        request = urllib2.Request(stock_url)
+        stock_url = self._engine.get_url(stock_id, date)
+        print(stock_url)
+
+        request = http.Request(stock_url)
         request.add_header('Content-Type', 'application/json')
-        response = urllib2.urlopen(request)
-        data = response.read()
+        response = http.urlopen(request)
+        data = response.read().decode('cp936')
 
         return self._engine.parse(data, stock_id)
+
 
 __all__ = ['Requester']
