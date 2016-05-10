@@ -1,4 +1,3 @@
-__author__ = 'roy'
 import json
 
 from cstock.request import Requester
