@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 NAME = 'chinesestockapi'
-VERSION = '1.4'
-DESCRIPTION = 'Python API to get Chinese stock price'
+VERSION = '2.0'
+DESCRIPTION = 'Python API to get Chinese stock price (For Python3.5)'
 LONG_DESCRIPTION = """\
 Library to get Chinese stock price
 
@@ -25,11 +25,11 @@ Usage:
 
  print stock.as_dict()
 
-Github Site: https://github.com/godsarmy/chinese-stock-api.
+Github Site: https://github.com/seizetheday/chinese-stock-api.
 """
-AUTHOR = 'Walt Chen'
-AUTHOR_EMAIL = 'godsarmycy@gmail.com'
-URL = 'https://pypi.python.org/pypi/chinesestockapi'
+AUTHOR = 'Roy Liu'
+AUTHOR_EMAIL = 'roystd@qq.com'
+URL = ''
 PLATFORM = 'any'
 LICENSE = 'Apache Software License'
 
@@ -45,7 +45,7 @@ if __name__ == '__main__':
         author_email=AUTHOR_EMAIL,
         url=URL,
         packages=find_packages(exclude=["test"]),
-        platforms=PLATFORM ,
+        platforms=PLATFORM,
         license=LICENSE,
-        test_suite = 'nose.collector'
+        test_suite='nose.collector'
     )
