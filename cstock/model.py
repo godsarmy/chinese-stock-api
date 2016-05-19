@@ -32,6 +32,10 @@ class Stock(object):
         'volume',
         'turnover',
         'yesterday_close',
+        'buy1p',
+        'buy1v',
+        'sell1p',
+        'sell1v'
     ]
 
     def __init__(self, **argvs):
