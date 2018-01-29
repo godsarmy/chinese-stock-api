@@ -78,13 +78,22 @@ class Engine(object):
         :rtype:
             ``str``
         """
+        if stock_id.endswith('.SH'):
+            return self.shanghai_transform(stock_id.replace('.SH', ''))
+
+        if stock_id.endswith('.SZ'):
+            return self.shenzhen_transform(stock_id.replace('.SZ', ''))
+
+        if stock_id.endswith('.HK'):
+            return self.hk_transform(stock_id.replace('.HK', ''))
+
         if stock_id.startswith('0') or stock_id.startswith('3'):
             return self.shenzhen_transform(stock_id)
 
         if stock_id.startswith('6'):
             return self.shanghai_transform(stock_id)
 
-        if stock_id.lower().startswith('sh') or stock_id.lower().startswith('sz'):
+        if stock_id.lower().startswith('sh') or stock_id.lower().startswith('sz') or stock_id.lower().startswith('hk'):
             return stock_id
 
         raise ParserException("Unknow stock id %s" % stock_id)

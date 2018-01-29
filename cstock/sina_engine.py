@@ -26,6 +26,7 @@ class SinaEngine(Engine):
 
         self.shanghai_transform = lambda sid: "sh%s" % sid
         self.shenzhen_transform = lambda sid: "sz%s" % sid
+        self.hk_transform = lambda sid: "hk%s" % sid
 
     def get_url(self, stock_id, date=None):
         if date is not None:
@@ -54,29 +55,60 @@ class SinaEngine(Engine):
     def _generate_stock(obj, stock_id):
         d = dict(enumerate(obj))
 
-        date = d.get(30, None)
-        time = d.get(31, None)
+        if stock_id.endswith('.HK'):
+            date = d.get(17, None)
+            time = d.get(18, None)
+        else:
+            date = d.get(30, None)
+            time = d.get(31, None)
 
         if date is not None:
-            date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+            if stock_id.endswith('.HK'):
+                date = datetime.datetime.strptime(date, '%Y/%m/%d').date()
+            else:
+                date = datetime.datetime.strptime(date, '%Y-%m-%d').date()
 
         if time is not None:
-            time = datetime.datetime.strptime(time, '%H:%M:%S').time()
+            if stock_id.endswith('.HK'):
+                time = datetime.datetime.strptime(time, '%H:%M').time()
+            else:
+                time = datetime.datetime.strptime(time, '%H:%M:%S').time()
 
-        return Stock(
-            code=stock_id,
-            name=d.get(0, None),
-            open=d.get(1, None),
-            yesterday_close=d.get(2, None),
-            price=d.get(3, None),
-            high=d.get(4, None),
-            low=d.get(5, None),
-            volume=d.get(8, None),
-            turnover=d.get(9, None),
-            date=date,
-            time=time,
-            buy1p=d.get(6, None),
-            buy1v=d.get(10, None),
-            sell1p=d.get(7, None),
-            sell1v=d.get(20, None)
-        )
+        if stock_id.endswith('.HK'):
+            ret = Stock(
+                code=stock_id,
+                name=d.get(1, None),
+                open=d.get(2, None),
+                yesterday_close=d.get(3, None),
+                price=d.get(6, None),
+                high=d.get(4, None),
+                low=d.get(5, None),
+                volume=d.get(11, None),
+                turnover=d.get(7, None),
+                date=date,
+                time=time,
+                buy1p=d.get(6, None),
+                buy1v=d.get(12, None),
+                sell1p=d.get(6, None),
+                sell1v=d.get(12, None)
+            )
+        else:
+            ret = Stock(
+                code=stock_id,
+                name=d.get(0, None),
+                open=d.get(1, None),
+                yesterday_close=d.get(2, None),
+                price=d.get(3, None),
+                high=d.get(4, None),
+                low=d.get(5, None),
+                volume=d.get(8, None),
+                turnover=d.get(9, None),
+                date=date,
+                time=time,
+                buy1p=d.get(6, None),
+                buy1v=d.get(10, None),
+                sell1p=d.get(7, None),
+                sell1v=d.get(20, None)
+            )
+
+        return ret

@@ -22,9 +22,13 @@ class TestEngine(unittest.TestCase):
     def setUp(self):
         self.engine = SinaEngine()
 
-    def test_get_url(self):
-        url = self.engine.get_url('600010') 
+    def test_get_url_sh(self):
+        url = self.engine.get_url('600010.SH')
         self.assertEqual(url, "http://hq.sinajs.cn/list=sh600010")
+
+    def test_get_url_sz(self):
+        url = self.engine.get_url('000001.SZ')
+        self.assertEqual(url, "http://hq.sinajs.cn/list=sz000001")
 
     def test_parse(self):
         data = 'var hq_str_sh600010="包钢股份,5.98,5.99,6.15,6.34,5.95,6.15,6.16,542628944,3341837325,239800,6.15,1033800,6.14,2408711,6.13,1719525,6.12,1001900,6.11,2873590,6.16,1481300,6.17,2113716,6.18,1177600,6.19,2587603,6.20,2015-03-18,15:03:05,00";'
@@ -38,7 +42,7 @@ class TestEngine(unittest.TestCase):
              'code': 'foo_id',
              'high': '6.34',
              'low': '5.95',
-             'name': '\xe5\x8c\x85\xe9\x92\xa2\xe8\x82\xa1\xe4\xbb\xbd',
+             'name': '包钢股份',
              'open': '5.98',
              'price': '6.15',
              'turnover': '3341837325',
