@@ -41,6 +41,9 @@ class Requester(object):
 
         request = http.Request(stock_url)
         request.add_header('Content-Type', 'application/json')
+        trasformed_code = self._engine.shanghai_transform(stock_id)
+        referer = 'https://finance.sina.com.cn/realstock/company/' + trasformed_code + '/nc.shtml'
+        request.add_header('referer', referer)
         response = http.urlopen(request)
         data = response.read().decode('cp936')
 
