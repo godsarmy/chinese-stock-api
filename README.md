@@ -2,9 +2,7 @@
 Library to get Chinese stock price
 
 Supported Engines:
- - Hexun API
  - Sina Finance API
- - Yahoo Finance API
 
 Usage:
 
