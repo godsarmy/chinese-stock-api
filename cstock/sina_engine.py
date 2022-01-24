@@ -18,7 +18,7 @@ class SinaEngine(Engine):
     Sina Engine transform stock id & parse data
     """
 
-    DEFAULT_BASE_URL = "http://hq.sinajs.cn/list=%s"
+    DEFAULT_BASE_URL = "https://hq.sinajs.cn/list=%s"
 
     def __init__(self, base_url=None):
 
