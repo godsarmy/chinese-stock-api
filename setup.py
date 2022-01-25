@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 
 NAME = 'chinesestockapi_py3'
-VERSION = '1.1.1'
-DESCRIPTION = 'Python API to get Chinese stock price for Python3.5'
+VERSION = '2.0.0'
+DESCRIPTION = 'Python API to get Chinese stock price for Python3'
 LONG_DESCRIPTION = """\
 Library to get Chinese stock price
 
 Supported Engines:
- - Hexun API
  - Sina Finance API
- - Yahoo Finance API
 
 Usage:
 
@@ -27,7 +25,7 @@ Usage:
 
 Github Site: https://github.com/seizetheday/chinese-stock-api.
 """
-AUTHOR = 'Roy Liu'
+AUTHOR = 'James'
 AUTHOR_EMAIL = 'roystd@qq.com'
 URL = ''
 PLATFORM = 'any'
